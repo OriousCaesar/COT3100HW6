@@ -23,21 +23,21 @@ public:
     }
 };
 
-bool isReflexive(int* domain, int domSize, relation testing){
+bool isReflexive(int* domain, int domSize, relation testing){ // Definition: For all x in A, (x,x) is in R
     for(int i = 0; i<domSize; i++){
         int pair[2] = {domain[i], domain[i]};
         if(!testing.isIn(pair)) return false;
     }
     return true;
 }
-bool isIrreflexive(int* domain, int domSize, relation testing){
+bool isIrreflexive(int* domain, int domSize, relation testing){ // Definition: For all x in A, (x,x) is not in R
     for(int i = 0; i<domSize; i++){
         int pair[2] = {domain[i], domain[i]};
         if(testing.isIn(pair)) return false;
     }
     return true;
 }
-bool isSymmetric(int* domain, int domSize, relation testing){
+bool isSymmetric(int* domain, int domSize, relation testing){ // Definition: For all x,y in A, if (x,y) is in R then (y,x) is in R
     for(int i = 0; i<domSize; i++){
         for(int j = 0; j<domSize; j++){
             int pairA[2] = {domain[i], domain[j]};
@@ -48,7 +48,7 @@ bool isSymmetric(int* domain, int domSize, relation testing){
     }
     return true;
 }
-bool isAntiSymmetric(int* domain, int domSize, relation testing){
+bool isAntiSymmetric(int* domain, int domSize, relation testing){ // Definition: For all x,y in A, if (x,y) and (y,x) are in R then x = y
     for(int i = 0; i<domSize; i++){
         for(int j = 0; j<domSize; j++){
             int pairA[2] = {domain[i], domain[j]};
@@ -59,10 +59,10 @@ bool isAntiSymmetric(int* domain, int domSize, relation testing){
     }
     return true;
 }
-bool isAsymmetric(int* domain, int domSize, relation testing){
+bool isAsymmetric(int* domain, int domSize, relation testing){ // Corollary: A relation is asymmetric if it is both anti-symmetric and irreflexive
     return isAntiSymmetric(domain, domSize, testing) && isIrreflexive(domain, domSize, testing);
 }
-bool isTransitive(int* domain, int domSize, relation testing){
+bool isTransitive(int* domain, int domSize, relation testing){ // Definition: For all x,y,z in A, if (x,y) and (y,z) are in R then (x,z) is in R
     for(int i = 0; i<domSize; i++){
         for(int j = 0; j<domSize; j++){
             for(int k = 0; k<domSize; k++){
